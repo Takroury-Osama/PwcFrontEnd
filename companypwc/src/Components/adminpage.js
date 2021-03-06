@@ -17,37 +17,17 @@ import {
 const AdminPage = () => {
   let [Complaint, setComplaint] = useState([])
   let [Update, setUpdate] = useState({
-    Name:'osa',
-    Email:'osa',
-    Phone:'99999',
-    Datetime:'',
-    Location:'',
+
   });
 
 
-
-
-    let DeleteData =() => {
-
-  //  console.log(props.ID);
-  //  axios.delete('http://localhost:4000/booking/'+ ID)
-  //      .then((res) => {
-  //        console.log(res);
-  //      })
-  //      .catch((err) => {
-  //        console.log(err);
-  //      })
-  // }
-    alert("delete");
-
-    }
-
   let UpdateData = (event) => {
+    console.log(Complaint[0]);
+    alert(event.target.name)
+    console.log(event.target.name);
 
-    setUpdate(Update)
-
-
-    //  axios.put('http://localhost:4000/booking/'+ ID)
+    // setUpdate(Update)
+    //  axios.put('http://localhost:4000/editcomplaint/'+ ID)
     //      .then((res) => {
     //        console.log(res);
     //      })
@@ -57,6 +37,7 @@ const AdminPage = () => {
     // }
   }
 
+//get all complaint for admin from database
 useEffect(() => {
   axios.get('http://localhost:4000/complaints')
       .then((res) => {
@@ -68,30 +49,31 @@ useEffect(() => {
       })
     },[]);
 
-
   return (
     <div className="my-5">
     {Complaint.length? Complaint.map(complaint =>
     <Card style={{ width: '30rem' }} key={complaint._id}>
       <Card.Body>
-        <Card.Title>Osama Altakroruy</Card.Title>
+        <Card.Title>{complaint.complaintUserName}</Card.Title>
         <Card.Text>
           {complaint.typeName}
         </Card.Text>
         <Card.Text>
+        <strong>Complaint: </strong>
           {complaint.complaintText}
         </Card.Text>
         <Card.Text>
-          {complaint.complaintStatus}
+        <strong>Status: </strong>
+           {complaint.complaintStatus}
         </Card.Text>
         <ButtonGroup className="mx-2">
-        <Button variant="primary">Pending</Button>
+        <Button variant="primary" onClick={UpdateData} name="Pending">Pending</Button>
         </ButtonGroup>
         <ButtonGroup>
-        <Button variant="success" >Resolved</Button>
+        <Button variant="success" onClick={UpdateData} name="Resolved">Resolved</Button>
         </ButtonGroup>
         <ButtonGroup className="mx-2">
-        <Button variant="danger">Dismissed</Button>
+        <Button variant="danger" onClick={UpdateData} name="Dismissed">Dismissed</Button>
         </ButtonGroup>
       </Card.Body>
       </Card>

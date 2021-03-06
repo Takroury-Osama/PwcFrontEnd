@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Form , Button} from 'react-bootstrap'
 import axios from 'axios'
+import style from '../Containers/css/login.css'
 import {AppContext} from '../App'
 
 
@@ -14,46 +15,39 @@ const Login = (props) => {
 
 function handleSubmit(event) {
   event.preventDefault()
-  console.log('in login');
+//  console.log('in login');
   axios.post('http://localhost:4000/login', userLog)
   .then((res) => {
-    console.log(res.data);
-    console.log('----', AppStates);
+  //  console.log(res.data);
+  //  console.log('----', AppStates);
     if(res.data.userIsAdmin === true) {
     AppStates.setLoginState('admin');
     }
-  else{
+  else {
     AppStates.setLoginState('user')
-  }
+    }
   })
   .catch((err) => {
     console.log(err);
   })
-
 }
-
   return (
-        <form onSubmit={handleSubmit}>
-            <h3>Log in</h3>
-            <div className="form-group">
-                <label>Email</label>
-                <input type="email" className="form-control" name="userEmail" placeholder="Enter Your Email" onChange={handleChange}/>
-            </div>
+    <div className="container">
+        <Form className="login-form" onSubmit={handleSubmit}>
+        <h2> Login Page </h2>
+            <Form.Group controlId="formBasicEmail" className="square">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control type="email" name="userEmail" placeholder="Enter Your Email" onChange={handleChange} />
+            </Form.Group>
 
-            <div className="form-group">
-                <label>Password</label>
-                <input type="password" className="form-control" name="userPassword" placeholder="Password"  onChange={handleChange} />
-            </div>
+            <Form.Group controlId="formBasicEmail" className="square">
+              <Form.Label>Password</Form.Label>
+              <Form.Control type="password" name="userPassword" placeholder="Enter Your Password" onChange={handleChange} />
+            </Form.Group>
 
-            <div className="form-group">
-                <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                </div>
-            </div>
-
-            <button type="submit" className="btn btn-dark btn-lg btn-block">Sign in</button>
-        </form>
+            <button type="submit" className="btn btn-primary btn-ghost">Login</button>
+        </Form>
+      </div>
     );
 }
 

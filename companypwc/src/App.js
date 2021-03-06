@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignUp from './Components/signup'
 import Login from './Components/login'
 import Complaint from './Components/complaint'
-import ComplaintPage from './Components/complaintpage'
 import AdminPage from './Components/adminpage'
 
 import {

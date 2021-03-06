@@ -6,7 +6,7 @@ import axios from 'axios'
 const SignUp = (props) => {
 
   const [state, setState] = useState({
-    Email: "",
+    userEmail: "",
     userName: "",
     userPassword: "",
   //  userIsAdmin: ""
@@ -36,10 +36,11 @@ const SignUp = (props) => {
 
   return (
     <div className="container">
-    <Form onSubmit={SubmitForm}>
+    <Form className="login-form" onSubmit={SubmitForm}>
+      <h2> SignUp Page </h2>
     <Form.Group controlId="formBasicEmail">
       <Form.Label>Email address</Form.Label>
-      <Form.Control type="email" name="Email" placeholder="Enter Your Email" onChange={handleChange} />
+      <Form.Control type="email" name="userEmail" placeholder="Enter Your Email" onChange={handleChange} />
     </Form.Group>
 
     <Form.Group controlId="formBasicUserName">
