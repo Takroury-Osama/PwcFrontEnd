@@ -59,6 +59,7 @@ SubmitComplaint = (event) => {
 
     return (
       <>
+        <h2 className="text-white"> You will See your complaint here. </h2>
         <Button variant="primary" onClick={handleShow}>
           New Complaint
         </Button>

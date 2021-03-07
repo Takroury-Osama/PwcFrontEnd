@@ -14,17 +14,17 @@ import {
 } from "react-router-dom";
 
 
-const AdminPage = () => {
+const AdminPage = (props) => {
   let [Complaint, setComplaint] = useState([])
-  let [Update, setUpdate] = useState({
 
-  });
+  // let [Update, setUpdate] = useState({
+  //
+  // });
 
 
-  let UpdateData = (event) => {
-    console.log(Complaint[0]);
-    alert(event.target.name)
-    console.log(event.target.name);
+  let UpdateData = (props) => {
+    console.log(Complaint[0]._id);
+    console.log();
 
     // setUpdate(Update)
     //  axios.put('http://localhost:4000/editcomplaint/'+ ID)
@@ -67,13 +67,13 @@ useEffect(() => {
            {complaint.complaintStatus}
         </Card.Text>
         <ButtonGroup className="mx-2">
-        <Button variant="primary" onClick={UpdateData} name="Pending">Pending</Button>
+        <Button variant="primary" onClick={()=>UpdateData(props)} name="Pending">Pending</Button>
         </ButtonGroup>
         <ButtonGroup>
-        <Button variant="success" onClick={UpdateData} name="Resolved">Resolved</Button>
+        <Button variant="success" onClick={()=>UpdateData(props)} name="Resolved">Resolved</Button>
         </ButtonGroup>
         <ButtonGroup className="mx-2">
-        <Button variant="danger" onClick={UpdateData} name="Dismissed">Dismissed</Button>
+        <Button variant="danger" onClick={()=>UpdateData(props)} name="Dismissed">Dismissed</Button>
         </ButtonGroup>
       </Card.Body>
       </Card>

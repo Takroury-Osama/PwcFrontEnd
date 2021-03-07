@@ -34,7 +34,7 @@ function handleSubmit(event) {
   return (
     <div className="container">
         <Form className="login-form" onSubmit={handleSubmit}>
-        <h2> Login Page </h2>
+        <h2 className="titleForm"> Login Page </h2>
             <Form.Group controlId="formBasicEmail" className="square">
               <Form.Label>Email address</Form.Label>
               <Form.Control type="email" name="userEmail" placeholder="Enter Your Email" onChange={handleChange} />

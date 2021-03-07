@@ -37,7 +37,7 @@ const SignUp = (props) => {
   return (
     <div className="container">
     <Form className="login-form" onSubmit={SubmitForm}>
-      <h2> SignUp Page </h2>
+      <h2 className="titleForm"> Sign Up Page </h2>
     <Form.Group controlId="formBasicEmail">
       <Form.Label>Email address</Form.Label>
       <Form.Control type="email" name="userEmail" placeholder="Enter Your Email" onChange={handleChange} />
